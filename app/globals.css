@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  cursor: none;
+}
+.animatedText {
+  position: relative;
+  width: 170px;
+  /* padding: 20px; */
+  font-size: 60px;
+  color: black;
+  overflow: hidden; /* Taşan arka planı gizlemek için */
+  z-index: 1;
+  font-weight: bold;
+}
+
+.animatedText::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Arka planın soldan başlaması için */
+  width: 100%;
+  height: 100%;
+  background-color: #F7C600; /* Sarı renk */
+  animation: slideBackground 3s linear infinite; /* Animasyon döngüsü */
+  z-index: -1;
+}
+
+@keyframes slideBackground {
+  0% {
+    left: -100%; /* Ekranın sol dışında başlar */
+  }
+  50% {
+    left: 0%; /* Ekranın soluna gelir, tam görünür olur */
+  }
+  100% {
+    left: 100%; /* Sağ dışına çıkarak kaybolur */
+  }
+}
+
+.about-bg{
+  background-image: url('../public/about.jpg');
+  height: 700px;
+  background-size: cover; /* Resmin tam ekranı kaplaması için */
+  background-position: center; /* Resmi ortalamak için */
+  background-repeat: no-repeat;
+}
+
+.about-info{
+  background-image: url('../public/about-bg-img.jpg');
+  height: 700px;
+  background-size: cover; /* Resmin tam ekranı kaplaması için */
+  background-position: center; /* Resmi ortalamak için */
+  background-repeat: no-repeat;
+}
+
+.services-bg{
+  background-image: url('../public/services-bg.jpg');
+  height: 700px;
+  background-size: cover; /* Resmin tam ekranı kaplaması için */
+  background-position: center; /* Resmi ortalamak için */
+  background-repeat: no-repeat;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 20s ease;
+}
+
+/* Menü açıldığında */
+.menu.open {
+  transform: translateX(0);
+  transition: transform 100s ease;
+}
